@@ -10,6 +10,8 @@
 
     <!--Description-->
     
+        <meta name="description" content="Linux第一次实验过程">
+    
 
     <!--Author-->
     
@@ -18,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="欢迎来到我的世界"/>
+        <meta property="og:title" content="Linux 实验"/>
     
 
     <!--Open Graph Description-->
@@ -29,7 +31,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -43,7 +45,7 @@
 
     <!-- Title -->
     
-    <title>欢迎来到我的世界</title>
+    <title>Linux 实验 - 欢迎来到我的世界</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -138,19 +140,16 @@
         <!--Title and Logo-->
         <header>
     <div class="logo">
-        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
-        
-            <h1 id="main-title" class="title">欢迎来到我的世界</h1>
+        <a href="/"><i class="logo-icon fa fa-pencil-square" aria-hidden="true"></i></a>
         
     </div>
 </header>
 
         <section class="main">
             
-                
 <div class="post">
 
-    <div class="post-header index">
+    <div class="post-header">
         <h1 class="title">
             <a href="/2022/03/19/linux%20%E5%AE%9E%E9%AA%8C/">
                 Linux 实验
@@ -161,57 +160,50 @@
                 <span class="date">2022-03-19</span>
             
             
-                <a href="http://example.com/2022/03/19/linux%20%E5%AE%9E%E9%AA%8C/#disqus_thread" class="comments article-comment-link">留言</a>
+                <a href="#disqus_thread" class="comments">留言</a>
             
             
         </div>
     </div>
 
-    
-        <div class="content">
-            Linux第一次实验过程
-        </div>
-        <a href="/2022/03/19/linux%20%E5%AE%9E%E9%AA%8C/" class="read-more">Read More</a>
-    
+    <div class="content">
 
-</div>
-            
-                
-<div class="post">
+        <!-- Gallery -->
+        
 
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/03/09/%E6%98%9F%E4%BA%91/">
-                星云特效
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-03-09</span>
-            
-            
-                <a href="http://example.com/2022/03/09/%E6%98%9F%E4%BA%91/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
+        <!-- Post Content -->
+        <h1 id="Linux第一次实验过程"><a href="#Linux第一次实验过程" class="headerlink" title="Linux第一次实验过程"></a>Linux第一次实验过程</h1><h4 id="第一步：将-university-center移动到free-the目录下"><a href="#第一步：将-university-center移动到free-the目录下" class="headerlink" title="第一步：将 university_center移动到free_the目录下"></a>第一步：将 university_center移动到free_the目录下</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost university_center]# pwd</span><br><span class="line">/root/lab1_handout/start/free_the/university_center</span><br></pre></td></tr></table></figure>
+<h4 id="第二步：删除capture-the这个目录"><a href="#第二步：删除capture-the这个目录" class="headerlink" title="第二步：删除capture_the这个目录"></a>第二步：删除capture_the这个目录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost start]# rm -r capture_the/</span><br></pre></td></tr></table></figure>
+<h4 id="第三步：在evil-plans中搜索secret-message"><a href="#第三步：在evil-plans中搜索secret-message" class="headerlink" title="第三步：在evil_plans中搜索secret message"></a>第三步：在evil_plans中搜索secret message</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost evil_plans]# grep &#x27;secret message:&#x27; *</span><br><span class="line">evil24.txt:21 secret message: pineapple</span><br></pre></td></tr></table></figure>
+<h4 id="第四步：查看evil-plans中的evil24-txt文件"><a href="#第四步：查看evil-plans中的evil24-txt文件" class="headerlink" title="第四步：查看evil_plans中的evil24.txt文件"></a>第四步：查看evil_plans中的evil24.txt文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost evil_plans]# cat evil24.txt </span><br><span class="line">answer:cat</span><br></pre></td></tr></table></figure>
+<h4 id="第五步：将evil24-txt中的内容排序"><a href="#第五步：将evil24-txt中的内容排序" class="headerlink" title="第五步：将evil24.txt中的内容排序"></a>第五步：将evil24.txt中的内容排序</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost evil_plans]# sort -n evil24.txt  | uniq</span><br><span class="line">answer:sort -n evil24.txt  | uniq</span><br></pre></td></tr></table></figure>
+<h4 id="第六步：创建一个名为release-txt文件在we-tried-to目录下"><a href="#第六步：创建一个名为release-txt文件在we-tried-to目录下" class="headerlink" title="第六步：创建一个名为release.txt文件在we_tried_to目录下"></a>第六步：创建一个名为release.txt文件在we_tried_to目录下</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost we_tried_to]# touch release.txt</span><br></pre></td></tr></table></figure>
+<h4 id="第七步：移动代码并且新建一个名为but-txt的文件"><a href="#第七步：移动代码并且新建一个名为but-txt的文件" class="headerlink" title="第七步：移动代码并且新建一个名为but.txt的文件"></a>第七步：移动代码并且新建一个名为but.txt的文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost one]# vim listened.c</span><br><span class="line">answer:42</span><br></pre></td></tr></table></figure>
+<h4 id="第八步：删除evil-plans目录然后查看目录"><a href="#第八步：删除evil-plans目录然后查看目录" class="headerlink" title="第八步：删除evil_plans目录然后查看目录"></a>第八步：删除evil_plans目录然后查看目录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost start]# tree </span><br><span class="line">answer:freetheuniversitycenterstoneswetriedtoreleasethembutnoonelistened</span><br></pre></td></tr></table></figure>
     </div>
 
     
-        <div class="content">
-            星云的构成及构成
-        </div>
-        <a href="/2022/03/09/%E6%98%9F%E4%BA%91/" class="read-more">Read More</a>
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+    </div>
     
 
 </div>
-            
         </section>
+
     </div>
 </div>
-
-
-
-
 
 
 </div>
@@ -371,7 +363,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
