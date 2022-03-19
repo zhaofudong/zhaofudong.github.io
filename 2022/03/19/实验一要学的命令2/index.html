@@ -10,6 +10,8 @@
 
     <!--Description-->
     
+        <meta name="description" content="Linux基础命令">
+    
 
     <!--Author-->
     
@@ -18,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="欢迎来到我的世界"/>
+        <meta property="og:title" content="基础命令2"/>
     
 
     <!--Open Graph Description-->
@@ -29,7 +31,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -43,7 +45,7 @@
 
     <!-- Title -->
     
-    <title>欢迎来到我的世界</title>
+    <title>基础命令2 - 欢迎来到我的世界</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -138,19 +140,16 @@
         <!--Title and Logo-->
         <header>
     <div class="logo">
-        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
-        
-            <h1 id="main-title" class="title">欢迎来到我的世界</h1>
+        <a href="/"><i class="logo-icon fa fa-pencil-square" aria-hidden="true"></i></a>
         
     </div>
 </header>
 
         <section class="main">
             
-                
 <div class="post">
 
-    <div class="post-header index">
+    <div class="post-header">
         <h1 class="title">
             <a href="/2022/03/19/%E5%AE%9E%E9%AA%8C%E4%B8%80%E8%A6%81%E5%AD%A6%E7%9A%84%E5%91%BD%E4%BB%A42/">
                 基础命令2
@@ -161,115 +160,48 @@
                 <span class="date">2022-03-19</span>
             
             
-                <a href="http://example.com/2022/03/19/%E5%AE%9E%E9%AA%8C%E4%B8%80%E8%A6%81%E5%AD%A6%E7%9A%84%E5%91%BD%E4%BB%A42/#disqus_thread" class="comments article-comment-link">留言</a>
+                <a href="#disqus_thread" class="comments">留言</a>
             
             
         </div>
     </div>
 
-    
-        <div class="content">
-            Linux基础命令
-        </div>
-        <a href="/2022/03/19/%E5%AE%9E%E9%AA%8C%E4%B8%80%E8%A6%81%E5%AD%A6%E7%9A%84%E5%91%BD%E4%BB%A42/" class="read-more">Read More</a>
-    
+    <div class="content">
 
-</div>
-            
-                
-<div class="post">
+        <!-- Gallery -->
+        
 
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/03/19/%E5%AE%9E%E9%AA%8C%E4%B8%80%E8%A6%81%E5%AD%A6%E7%9A%84%E5%91%BD%E4%BB%A41/">
-                Linux基础命令
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-03-19</span>
-            
-            
-                <a href="http://example.com/2022/03/19/%E5%AE%9E%E9%AA%8C%E4%B8%80%E8%A6%81%E5%AD%A6%E7%9A%84%E5%91%BD%E4%BB%A41/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
+        <!-- Post Content -->
+        <h2 id="联机帮助命令"><a href="#联机帮助命令" class="headerlink" title="联机帮助命令"></a>联机帮助命令</h2><p>1．man<br>格式：man <command><br>功能说明：列出command命令的使用方法，包括指令的选项与相关的参数说明<br>范例：<br>列出ls命令的帮助信息：man ls<br>2．help<br>格式：<command> –help<br>功能说明：显示shell命令的信息。<br>范例：<br>列出ls命令的帮助信息：ls –help</p>
+<h2 id="二、vi编辑器的使用"><a href="#二、vi编辑器的使用" class="headerlink" title="二、vi编辑器的使用"></a>二、vi编辑器的使用</h2><p>vi或vim是Linux最基本的文本编辑工具，vi或vim虽然没有图形界面编辑器那样点鼠标的简单操作，但vi编辑器在系统管理、服务器管理中，永远不是图形界面的编辑器能比的。当没有安装X-windows桌面环境或桌面环境崩溃时，我们仍需要字符模式下的编辑器vi，vi或vim 编辑器在创建和编辑简单文档是最高效的工具。</p>
+<h3 id="1-vi编辑器的三种工作模式"><a href="#1-vi编辑器的三种工作模式" class="headerlink" title="1.vi编辑器的三种工作模式"></a>1.vi编辑器的三种工作模式</h3><p>vi有三种工作模式：命令模式、插入模式和末行模式<br>①命令模式<br><code>在shell环境中启动vi时，初始就是进入命令模式。</code>在该模式下，用户可以输入命令，用于管理自己的文档，包括控制屏幕光标的移动，字符、字或行的删除、移动、复制等。此时从键盘输入的任何字符都作为编辑命令来解释。若输入的是合法的vi命令，则vi在接受用户命令之后完成相应的动作；若输入的是不合法的命令，vi会响铃报警。需要注意的是，所输入的命令在屏幕上不显示。不管用户处于何种模式，只要用户按一下<Esc>键，即可使vi进入命令模式。<br>②插入模式<br><code>只有在插入模式下才可以进行文字输入。</code>在命令模式下输入命令i、附加命令啊、打开命令o、修改命令c、取代命令r或替换命令s都可以进入插入模式。在该模式下，用户输入的任何字符都被vi当做文件内容保存起来，并将其显示在屏幕上。在文本输入过程中，若想回到命令模式，按<Esc>键即可。<br>③末行模式<br><code>在命令模式下，用户按&lt;:&gt;键即可进入末行模式，此时vi会在显示窗口的最后一行显示一个“:”作为末行模式的提示符，等待用户输入命令。</code>多数文件管理命令都是在此模式下执行的，如保存文件或退出vi、寻找字符串、列出行号等。末行命令执行完后，vi自动回到命令模式。</p>
+<h3 id="2．vi的进入与退出"><a href="#2．vi的进入与退出" class="headerlink" title="2．vi的进入与退出"></a>2．vi的进入与退出</h3><p>vi是在Linux终端张运行的程序，它的所有操作必须通过键入相应的命令完成。本节介绍如何启动vi编辑啟、如何保存编辑的文件以及如何退出vi。<br>①进入vi<br><code>在终端shell提示符后键入vi和想要编辑或新建的文件名，便可进入vi。</code><br>进入vi之后，首先进入<code>命令模式</code>。光标停在屏幕第一行第一列上，其余各行首均有一个<code>“~”</code>符号，表示该行为空行。最后一行称为状态行，显示当前正在编辑的文件名及其状态。本例中“hello.c[NewFile]，hello.c是一个新建文件。<code>如果该文件已经存在，输入上述命令后，则会显示出该文件的内容。</code><br>②保存文件和退出vi<br>当编辑完文件，准备退出vi返回到shell时，可以使用以下几种方法之一：<br><code>在命令模式下</code><br><code>连按两次大写字母&lt;Z&gt;，</code>若当前编辑的文件曾被修改过，则vi保存该文件后退出，返回到shell；若当前文件没被修改过，直接退出。<br>在末行模式下<br>用以下命令进行保存文件：<br>w  vi保存当前编辑的文件而不退出vi，继续等待用户输入命令。<br>w<newfile> 把当前文件的内容保存到指定的文件newfile中，而原有文件保持不变，相当于windows系统中的“另存为…”；若newfile文件已经存在，则提示：file exists（use！to override），即如果要替换原有文件，需要使用“！”。<br>w！ <newfile> 把当前文件的内容保存到指定的文件newfile中，如果newfile已经存在，则覆盖原有内容。<br>使用下面方法可以退出vi：<br>q  不保存文件退出vi，。若文件修改过，则提示：no write since last chang（use！to overrides，即提示使用“！”放弃保存。<br>q！ 放弃对文件所做的修改，直接退出vi返回到shell。<br>wq  vi先保存文件，然后退出vi返回到shell</p>
+<h3 id="3．其他命令"><a href="#3．其他命令" class="headerlink" title="3．其他命令"></a>3．其他命令</h3><p>前面介绍了vi的几个基本操作，表2-2和表2-3列出了vi的一些常用操作。这些操作都是在命令模式下使用的。<br><img src="https://s2.loli.net/2022/03/19/92b6lLcZqQWzUBi.png" alt="image.png"><br><img src="https://s2.loli.net/2022/03/19/8dLIDxFUMvQ2Rfp.png" alt="image.png"><br><img src="https://s2.loli.net/2022/03/19/KCSTd6kIUP7ElrL.png" alt="image.png"></p>
+
     </div>
 
     
-        <div class="content">
-            Linux基础命令
-        </div>
-        <a href="/2022/03/19/%E5%AE%9E%E9%AA%8C%E4%B8%80%E8%A6%81%E5%AD%A6%E7%9A%84%E5%91%BD%E4%BB%A41/" class="read-more">Read More</a>
+
     
 
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-            
-                
-<div class="post">
 
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/03/19/linux%20%E5%AE%9E%E9%AA%8C/">
-                Linux 实验
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-03-19</span>
-            
-            
-                <a href="http://example.com/2022/03/19/linux%20%E5%AE%9E%E9%AA%8C/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
+
+
     </div>
-
-    
-        <div class="content">
-            Linux第一次实验过程
-        </div>
-        <a href="/2022/03/19/linux%20%E5%AE%9E%E9%AA%8C/" class="read-more">Read More</a>
     
 
 </div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2022/03/09/%E6%98%9F%E4%BA%91/">
-                星云特效
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-03-09</span>
-            
-            
-                <a href="http://example.com/2022/03/09/%E6%98%9F%E4%BA%91/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            星云的构成及构成
-        </div>
-        <a href="/2022/03/09/%E6%98%9F%E4%BA%91/" class="read-more">Read More</a>
-    
-
-</div>
-            
         </section>
+
     </div>
 </div>
-
-
-
-
 
 
 </div>
@@ -437,7 +369,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
