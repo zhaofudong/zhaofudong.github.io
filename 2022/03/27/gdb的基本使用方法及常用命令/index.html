@@ -10,7 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="Linux基础命令">
+        <meta name="description" content="gdb的基本使用方法及常用命令">
     
 
     <!--Author-->
@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="基础命令2"/>
+        <meta property="og:title" content="gdb的基本使用方法及常用命令"/>
     
 
     <!--Open Graph Description-->
@@ -45,7 +45,7 @@
 
     <!-- Title -->
     
-    <title>基础命令2 - 欢迎来到我的世界</title>
+    <title>gdb的基本使用方法及常用命令 - 欢迎来到我的世界</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -151,13 +151,13 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2022/03/19/%E5%AE%9E%E9%AA%8C%E4%B8%80%E8%A6%81%E5%AD%A6%E7%9A%84%E5%91%BD%E4%BB%A42/">
-                基础命令2
+            <a href="/2022/03/27/gdb%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                gdb的基本使用方法及常用命令
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2022-03-19</span>
+                <span class="date">2022-03-27</span>
             
             
                 <a href="#disqus_thread" class="comments">留言</a>
@@ -172,11 +172,34 @@
         
 
         <!-- Post Content -->
-        <h2 id="联机帮助命令"><a href="#联机帮助命令" class="headerlink" title="联机帮助命令"></a>联机帮助命令</h2><p>1．man<br>格式：man <command><br>功能说明：列出command命令的使用方法，包括指令的选项与相关的参数说明<br>范例：<br>列出ls命令的帮助信息：man ls<br>2．help<br>格式：<command> –help<br>功能说明：显示shell命令的信息。<br>范例：<br>列出ls命令的帮助信息：ls –help</p>
-<h2 id="二、vi编辑器的使用"><a href="#二、vi编辑器的使用" class="headerlink" title="二、vi编辑器的使用"></a>二、vi编辑器的使用</h2><p>vi或vim是Linux最基本的文本编辑工具，vi或vim虽然没有图形界面编辑器那样点鼠标的简单操作，但vi编辑器在系统管理、服务器管理中，永远不是图形界面的编辑器能比的。当没有安装X-windows桌面环境或桌面环境崩溃时，我们仍需要字符模式下的编辑器vi，vi或vim 编辑器在创建和编辑简单文档是最高效的工具。</p>
-<h3 id="1-vi编辑器的三种工作模式"><a href="#1-vi编辑器的三种工作模式" class="headerlink" title="1.vi编辑器的三种工作模式"></a>1.vi编辑器的三种工作模式</h3><p>vi有三种工作模式：命令模式、插入模式和末行模式<br>①命令模式<br><code>在shell环境中启动vi时，初始就是进入命令模式。</code>在该模式下，用户可以输入命令，用于管理自己的文档，包括控制屏幕光标的移动，字符、字或行的删除、移动、复制等。此时从键盘输入的任何字符都作为编辑命令来解释。若输入的是合法的vi命令，则vi在接受用户命令之后完成相应的动作；若输入的是不合法的命令，vi会响铃报警。需要注意的是，所输入的命令在屏幕上不显示。不管用户处于何种模式，只要用户按一下<Esc>键，即可使vi进入命令模式。<br>②插入模式<br><code>只有在插入模式下才可以进行文字输入。</code>在命令模式下输入命令i、附加命令啊、打开命令o、修改命令c、取代命令r或替换命令s都可以进入插入模式。在该模式下，用户输入的任何字符都被vi当做文件内容保存起来，并将其显示在屏幕上。在文本输入过程中，若想回到命令模式，按<Esc>键即可。<br>③末行模式<br><code>在命令模式下，用户按&lt;:&gt;键即可进入末行模式，此时vi会在显示窗口的最后一行显示一个“:”作为末行模式的提示符，等待用户输入命令。</code>多数文件管理命令都是在此模式下执行的，如保存文件或退出vi、寻找字符串、列出行号等。末行命令执行完后，vi自动回到命令模式。</p>
-<h3 id="2．vi的进入与退出"><a href="#2．vi的进入与退出" class="headerlink" title="2．vi的进入与退出"></a>2．vi的进入与退出</h3><p>vi是在Linux终端张运行的程序，它的所有操作必须通过键入相应的命令完成。本节介绍如何启动vi编辑啟、如何保存编辑的文件以及如何退出vi。<br>①进入vi<br><code>在终端shell提示符后键入vi和想要编辑或新建的文件名，便可进入vi。</code><br>进入vi之后，首先进入<code>命令模式</code>。光标停在屏幕第一行第一列上，其余各行首均有一个<code>“~”</code>符号，表示该行为空行。最后一行称为状态行，显示当前正在编辑的文件名及其状态。本例中“hello.c[NewFile]，hello.c是一个新建文件。<code>如果该文件已经存在，输入上述命令后，则会显示出该文件的内容。</code><br>②保存文件和退出vi<br>当编辑完文件，准备退出vi返回到shell时，可以使用以下几种方法之一：<br><code>在命令模式下</code><br><code>连按两次大写字母&lt;Z&gt;，</code>若当前编辑的文件曾被修改过，则vi保存该文件后退出，返回到shell；若当前文件没被修改过，直接退出。<br>在末行模式下<br>用以下命令进行保存文件：<br>w  vi保存当前编辑的文件而不退出vi，继续等待用户输入命令。<br>w<newfile> 把当前文件的内容保存到指定的文件newfile中，而原有文件保持不变，相当于windows系统中的“另存为…”；若newfile文件已经存在，则提示：file exists（use！to override），即如果要替换原有文件，需要使用“！”。<br>w！ <newfile> 把当前文件的内容保存到指定的文件newfile中，如果newfile已经存在，则覆盖原有内容。<br>使用下面方法可以退出vi：<br>q  不保存文件退出vi，。若文件修改过，则提示：no write since last chang（use！to overrides，即提示使用“！”放弃保存。<br>q！ 放弃对文件所做的修改，直接退出vi返回到shell。<br>wq  vi先保存文件，然后退出vi返回到shell</p>
-<h3 id="3．其他命令"><a href="#3．其他命令" class="headerlink" title="3．其他命令"></a>3．其他命令</h3><p>前面介绍了vi的几个基本操作，表2-2和表2-3列出了vi的一些常用操作。这些操作都是在命令模式下使用的。<br><img src="https://s2.loli.net/2022/03/19/92b6lLcZqQWzUBi.png" alt="image.png"><br><img src="https://s2.loli.net/2022/03/19/8dLIDxFUMvQ2Rfp.png" alt="image.png"><br><img src="https://s2.loli.net/2022/03/19/KCSTd6kIUP7ElrL.png" alt="image.png"></p>
+        <h2 id="一、编译、链接成可执行文件"><a href="#一、编译、链接成可执行文件" class="headerlink" title="一、编译、链接成可执行文件"></a>一、编译、链接成可执行文件</h2><p><code>记得加入-g选项</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -g gdbtest.c -o test</span><br></pre></td></tr></table></figure>
+<h2 id="二、启动gdb"><a href="#二、启动gdb" class="headerlink" title="二、启动gdb"></a>二、启动gdb</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb filename   </span><br></pre></td></tr></table></figure>
+<p><code>注意：filename为可执行文件即上文编译之后的test文件</code><br>如下图：<br><img src="https://s2.loli.net/2022/03/27/dKokXJHEQ3qaSBG.png" alt="image.png"><br>或</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gdb</span><br><span class="line">(gdb)file filename</span><br></pre></td></tr></table></figure>
+<p>如下图：<br><img src="https://s2.loli.net/2022/03/27/wC2dSMpXRmqasfJ.jpg" alt="2.jpg"></p>
+<h2 id="三、退出"><a href="#三、退出" class="headerlink" title="三、退出"></a>三、退出</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb)quit</span><br></pre></td></tr></table></figure>
+<h2 id="四、基本操作"><a href="#四、基本操作" class="headerlink" title="四、基本操作"></a>四、基本操作</h2><p>1、列出源代码list，在提示符下打入list，会出现一部分源代码，接着按回车会重复上一次命令<br><img src="https://s2.loli.net/2022/03/27/1YBTAZmNKfU8xEg.png" alt="image.png"><br>（1）list 10  – 以第10行为中心显示<br><img src="https://s2.loli.net/2022/03/27/RtBUIJjFPsH4KQD.png" alt="image.png"><br>（2）显示compute函数 list compute<br><img src="https://s2.loli.net/2022/03/27/VDE9sNAYkKnzrjb.png" alt="image.png"><br>（3）列出10-15行的源代码 list 10,15<br><img src="https://s2.loli.net/2022/03/27/Gs2iObD4LzcqXNY.png" alt="image.png"><br>（4）列出其他文件的相应行或函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list gdbinc.h:1</span><br><span class="line">list gdbinc.h:max</span><br></pre></td></tr></table></figure>
+<p>2.运行程序run<br><img src="https://s2.loli.net/2022/03/27/pRd7zBUXmkPlnF6.png" alt="image.png"><br>如果需要参数可以在run后面跟上参数<br><img src="https://s2.loli.net/2022/03/27/K5ImsRUroEw9ZTp.png" alt="image.png"><br>3.设置断点break<br>（1）在某行设置断点，例如：在第7行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb)b 7</span><br></pre></td></tr></table></figure>
+<p>在第10行设置断点，break可简写为b<br><img src="https://s2.loli.net/2022/03/27/oD3a2GfPinFBlsM.png" alt="image.png"><br>（2）在某函数设置断点 break compute<br>（3）在其他文件设置断点(行或函数名) break gdbinc.h:2   break gdbinc.h:max<br>（4）在某个地址设置断点  break *address  （当你调试的程序没有源程序时使用）<br>（5）查询断点信息info break<br><img src="https://s2.loli.net/2022/03/27/EK36S5uYBw78ocM.png" alt="image.png"><br>（6）设置条件断点 break <linenum>or<func> if condition<br>     例如：break 8 if a &#x3D;&#x3D; 10<br>（7）开启和关闭断点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">disable 断点号 （关闭）</span><br><span class="line">enable 断点号  （开启）</span><br><span class="line">enable once 断点号 （开启一次）</span><br><span class="line">enable delete 断点号（开启一次后删除）</span><br></pre></td></tr></table></figure>
+<p>(8) 删除断点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete 断点号</span><br><span class="line">clear  清除当前行的断点</span><br></pre></td></tr></table></figure>
+<p>(9) 继续执行continue，当执行到某处中断时，使其继续执行<br><img src="https://s2.loli.net/2022/03/27/YanBxsoFKTQEtVR.jpg" alt="3.jpg"><br>4.单步执行不进入函数next</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb)next 或(gdb)n</span><br></pre></td></tr></table></figure>
+<p>5.单步执行进入函数step</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb)step</span><br></pre></td></tr></table></figure>
+<p>6.终止正在调试的程序kill</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb)kill</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/03/27/XCP7WxI4qpwBgYi.jpg" alt="4.jpg"><br>7.监视值变动watch expression（当你运行run后，你想知道哪些值在运行中被改变了，可以设置此）<br>如下图所示：<br><img src="https://s2.loli.net/2022/03/27/wqkeEdFayctWru1.png" alt="image.png"><br>8.监视值被读rwatch expression（基本同上）<br>9.在运行时打印变量的值print expression<br>     <code>print/F expression,其中F为格式（x--16进制,d--有符号十进制,u--无符号十进制,f--浮点格式）</code><br>10.修改变量值set variable&#x3D;value</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb)set variable=value</span><br></pre></td></tr></table></figure>
+<p>11.执行shell命令[shell 命令名]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb)shell 或(gdb)shell +命令名</span><br></pre></td></tr></table></figure>
+<p>12.不退出gdb产生可执行文件[make，必须有Makefile文件]<br>13.info命令（此命令用处广泛）<br>(1)info break查看断点信息（见上面断点）<br>(2)info args查看当前方法的参数<br><img src="https://s2.loli.net/2022/03/27/f5EiwCAgLy9Sbxq.png" alt="image.png"><br>(3)info stack查看调用堆栈<br><img src="https://s2.loli.net/2022/03/27/xiholUN3HKyVrOb.png" alt="image.png"><br>(4)info source查看当前源文件的信息<br><img src="https://s2.loli.net/2022/03/27/eM7KfXY154ILOzD.png" alt="image.png"><br>(5)info sources查看所有在程序中的源文件路径</p>
+<p>14.查看内存命令 x&#x2F;&lt;n&#x2F;f&#x2F;u&gt; <addr>   n、f、u是可选的参数。<addr>表示一个内存地址。</p>
+<p>n 是一个正整数，表示显示内存的长度，也就是说从当前地址向后显示几个地址的内容。<br>f 表示显示的格式，参见上面。如果地址所指的是字符串，那么格式可以是s，如果地十是指令地址，那么格式可以是i。<br>u 表示从当前地址往后请求的字节数，如果不指定的话，GDB默认是4个bytes。u参数可以用下面的字符来代替，b表示单字节，h表示双字节，w表示四字节，g表示八字节。当我们指定了字节长度后，GDB会从指内存定的内存地址开始，读写指定字节，并把其当作一个值取出来。<br>输出格式<br>一般来说，GDB会根据变量的类型输出变量的值。但你也可以自定义GDB的输出的格式。例如，你想输出一个整数的十六进制，或是二进制来查看这个整型变量的中的位的情况。要做到这样，你可以使用GDB的数据显示格式：<br>x 按十六进制格式显示变量。<br>d 按十进制格式显示变量。<br>u 按十六进制格式显示无符号整型。<br>o 按八进制格式显示变量。<br>t 按二进制格式显示变量。<br>a 按十六进制格式显示变量。<br>c 按字符格式显示变量。<br>f 按浮点数格式显示变量。<br><img src="https://s2.loli.net/2022/03/27/BjcTRfx8lAN5zdy.png" alt="image.png"><br>比如：上图中 x&#x2F;4dw 0xbffff650  指的是显示4个单元的内容，以10进制显示，每个单元长度为4个字节</p>
 
     </div>
 
