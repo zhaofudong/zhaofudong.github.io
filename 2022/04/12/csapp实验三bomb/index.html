@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="实验分析">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="赵福东">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="CSAPP实验三bomb实验题解"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="欢迎来到我的世界"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>CSAPP实验三bomb实验题解 - 欢迎来到我的世界</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-pencil-square" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2022/04/12/csapp%E5%AE%9E%E9%AA%8C%E4%B8%89bomb/">
+                CSAPP实验三bomb实验题解
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2022-04-12</span>
+            
+            
+                <a href="#disqus_thread" class="comments">留言</a>
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="第一关"><a href="#第一关" class="headerlink" title="第一关"></a>第一关</h2><p> 汇编代码<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0x0000000000400ee0 &lt;+0&gt;:	sub    $0x8,%rsp   #rsp栈顶指针-8之后释放空间，给要存的参数</span><br><span class="line">0x0000000000400ee4 &lt;+4&gt;:      mov    $0x402400,%esi  #移动0x402400地址中的内容到esi寄存器中，</span><br><span class="line">0x0000000000400ee9 &lt;+9&gt;:	callq  0x401338 &lt;strings_not_equal&gt; #过程调用</span><br><span class="line">0x0000000000400eee &lt;+14&gt;:	test   %eax,%eax </span><br><span class="line">0x0000000000400ef0 &lt;+16&gt;:	je     0x400ef7 &lt;phase_1+23&gt; #跳转指令，跳转到第23行，释放空间，该函数结束。</span><br><span class="line">0x0000000000400ef2 &lt;+18&gt;:	callq  0x40143a &lt;explode_bomb&gt;</span><br><span class="line">0x0000000000400ef7 &lt;+23&gt;:	add    $0x8,%rsp #释放空间</span><br><span class="line">0x0000000000400efb &lt;+27&gt;:	retq #返回到主函数中。</span><br></pre></td></tr></table></figure><br> call 指令有一个目标，即指明被调用过程的起始地址。同跳转指令一样，调用可以是直接的也可以是间接的，在汇编代码中，直接调用的目标是一个标号，而间接调用的目标是 * 后面跟一个操作数指令符。<br> test指令用来检查后面的参数是负数、零还是正数，或其中的一个操作数是一个掩码，用来指示哪位应该被检测。<br> 解析：该函数是判断用户输入的字符串是否与存储在内存中地址为:0x402400的内容是否相同，若不相同则引爆炸弹</p>
+<h3 id="answer"><a href="#answer" class="headerlink" title="answer"></a>answer</h3> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(gdb) x/sb 0x402400</span><br><span class="line">0x402400:	&quot;Border relations with Canada have never been better.&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h2><p> 汇编代码<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> (gdb) disas phase_2</span><br><span class="line">Dump of assembler code for function phase_2:</span><br><span class="line">   0x0000000000400efc &lt;+0&gt;:	push   %rbp</span><br><span class="line">   0x0000000000400efd &lt;+1&gt;:	push   %rbx</span><br><span class="line">   0x0000000000400efe &lt;+2&gt;:	sub    $0x28,%rsp</span><br><span class="line">   0x0000000000400f02 &lt;+6&gt;:	mov    %rsp,%rsi</span><br><span class="line">   0x0000000000400f05 &lt;+9&gt;:      callq 0x40145c&lt;read_six_numbers&gt;</span><br><span class="line">   0x0000000000400f0a &lt;+14&gt;:	cmpl   $0x1,(%rsp)</span><br><span class="line">   0x0000000000400f0e &lt;+18&gt;:	je     0x400f30 &lt;phase_2+52&gt;</span><br><span class="line">   0x0000000000400f10 &lt;+20&gt;:	callq  0x40143a &lt;explode_bomb&gt;</span><br><span class="line">   0x0000000000400f15 &lt;+25&gt;:	jmp    0x400f30 &lt;phase_2+52&gt;</span><br><span class="line">   0x0000000000400f17 &lt;+27&gt;:	mov    -0x4(%rbx),%eax</span><br><span class="line">   0x0000000000400f1a &lt;+30&gt;:	add    %eax,%eax</span><br><span class="line">   0x0000000000400f1c &lt;+32&gt;:	cmp    %eax,(%rbx)</span><br><span class="line">   0x0000000000400f1e &lt;+34&gt;:	je     0x400f25 &lt;phase_2+41&gt;</span><br><span class="line">   0x0000000000400f20 &lt;+36&gt;:	callq  0x40143a &lt;explode_bomb&gt;</span><br><span class="line">   0x0000000000400f25 &lt;+41&gt;:	add    $0x4,%rbx</span><br><span class="line">   0x0000000000400f29 &lt;+45&gt;:	cmp    %rbp,%rbx</span><br><span class="line">   0x0000000000400f2c &lt;+48&gt;:	jne    0x400f17 &lt;phase_2+27&gt;</span><br><span class="line">   0x0000000000400f2e &lt;+50&gt;:	jmp    0x400f3c &lt;phase_2+64&gt;</span><br><span class="line">   0x0000000000400f30 &lt;+52&gt;:	lea    0x4(%rsp),%rbx</span><br><span class="line">   0x0000000000400f35 &lt;+57&gt;:	lea    0x18(%rsp),%rbp</span><br><span class="line">   0x0000000000400f3a &lt;+62&gt;:	jmp    0x400f17 &lt;phase_2+27&gt;</span><br><span class="line">   0x0000000000400f3c &lt;+64&gt;:	add    $0x28,%rsp #释放空间，改程序结束。</span><br><span class="line">   0x0000000000400f40 &lt;+68&gt;:	pop    %rbx</span><br><span class="line">   0x0000000000400f41 &lt;+69&gt;:	pop    %rbp</span><br><span class="line">   0x0000000000400f42 &lt;+70&gt;:	retq   </span><br></pre></td></tr></table></figure><br> 分析：由汇编代码可以看出要结束第二关就要执行第64行汇编代码，因此要重点看如何跳转到第64行，可以看出由第50行跳转到第64行，然而他是通过第45行运行之后运行的<br> 这个类似一个for循环，一共要输入6个数，第一个数为1，后面每个数是前面的数的2倍。<br> 答案：1 2 4 8 16 32<br> C实现代码：<br> <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line">  <span class="meta">#<span class="keyword">define</span> N 10</span></span><br><span class="line">  <span class="type">int</span>  <span class="title function_">read_six_number</span><span class="params">(<span class="type">int</span> q[N])</span></span><br><span class="line">  &#123;</span><br><span class="line">	  <span class="type">int</span> a=<span class="number">6</span>;</span><br><span class="line"> 	 <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;a;i++)</span><br><span class="line">	 &#123;</span><br><span class="line">		 <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;q[i]);</span><br><span class="line">	 &#125;</span><br><span class="line">	  <span class="keyword">return</span> a;</span><br><span class="line">  &#125; </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> q[N],n,eax,final;</span><br><span class="line">	n=read_six_number(q);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		final=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(i==<span class="number">0</span>)</span><br><span class="line">		eax=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> eax+=eax;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,eax);</span><br><span class="line">    	<span class="keyword">if</span>(q[i]!=eax)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;BOMB! GAME OVER!&quot;</span>);</span><br><span class="line">			final=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	 <span class="keyword">if</span>(final==<span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot;That&#x27;s number 2.Keep going!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h2><p> 汇编代码：<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">0x0000000000400f43 &lt;+0&gt;:	sub    $0x18,%rsp</span><br><span class="line">0x0000000000400f47 &lt;+4&gt;:	lea    0xc(%rsp),%rcx</span><br><span class="line">0x0000000000400f4c &lt;+9&gt;:	lea    0x8(%rsp),%rdx</span><br><span class="line">0x0000000000400f51 &lt;+14&gt;:	mov    $0x4025cf,%esi</span><br><span class="line">0x0000000000400f56 &lt;+19&gt;:	mov    $0x0,%eax</span><br><span class="line">0x0000000000400f5b &lt;+24&gt;:	callq 0x400bf0&lt;__isoc99_sscanf@plt&gt;</span><br><span class="line">0x0000000000400f60 &lt;+29&gt;:	cmp    $0x1,%eax</span><br><span class="line">0x0000000000400f63 &lt;+32&gt;:	jg     0x400f6a &lt;phase_3+39&gt;</span><br><span class="line">0x0000000000400f65 &lt;+34&gt;:	callq  0x40143a &lt;explode_bomb&gt;</span><br><span class="line">0x0000000000400f6a &lt;+39&gt;:	cmpl   $0x7,0x8(%rsp)</span><br><span class="line">0x0000000000400f6f &lt;+44&gt;:	ja     0x400fad &lt;phase_3+106&gt;</span><br><span class="line">0x0000000000400f71 &lt;+46&gt;:	mov    0x8(%rsp),%eax</span><br><span class="line">0x0000000000400f75 &lt;+50&gt;:	jmpq   *0x402470(,%rax,8)</span><br><span class="line">0x0000000000400f7c &lt;+57&gt;:	mov    $0xcf,%eax</span><br><span class="line">0x0000000000400f81 &lt;+62&gt;:	jmp    0x400fbe &lt;phase_3+123&gt;</span><br><span class="line">0x0000000000400f83 &lt;+64&gt;:	mov    $0x2c3,%eax</span><br><span class="line">0x0000000000400f88 &lt;+69&gt;:	jmp    0x400fbe &lt;phase_3+123&gt;</span><br><span class="line">0x0000000000400f8a &lt;+71&gt;:	mov    $0x100,%eax</span><br><span class="line">0x0000000000400f8f &lt;+76&gt;:	jmp    0x400fbe &lt;phase_3+123&gt;</span><br><span class="line">0x0000000000400f91 &lt;+78&gt;:	mov    $0x185,%eax</span><br><span class="line">0x0000000000400f96 &lt;+83&gt;:	jmp    0x400fbe &lt;phase_3+123&gt;</span><br><span class="line">0x0000000000400f98 &lt;+85&gt;:	mov    $0xce,%eax</span><br><span class="line">0x0000000000400f9d &lt;+90&gt;:	jmp    0x400fbe &lt;phase_3+123&gt;</span><br><span class="line">0x0000000000400f9f &lt;+92&gt;:	mov    $0x2aa,%eax</span><br><span class="line">0x0000000000400fa4 &lt;+97&gt;:	jmp    0x400fbe &lt;phase_3+123&gt;</span><br><span class="line">0x0000000000400fa6 &lt;+99&gt;:	mov    $0x147,%eax</span><br><span class="line">0x0000000000400fab &lt;+104&gt;:	jmp    0x400fbe &lt;phase_3+123&gt;</span><br><span class="line">0x0000000000400fad &lt;+106&gt;:	callq  0x40143a &lt;explode_bomb&gt;</span><br><span class="line">0x0000000000400fb2 &lt;+111&gt;:	mov    $0x0,%eax</span><br><span class="line">0x0000000000400fb7 &lt;+116&gt;:	jmp    0x400fbe &lt;phase_3+123&gt;</span><br><span class="line">0x0000000000400fb9 &lt;+118&gt;:	mov    $0x137,%eax</span><br><span class="line">0x0000000000400fbe &lt;+123&gt;:	cmp    0xc(%rsp),%eax</span><br><span class="line">0x0000000000400fc2 &lt;+127&gt;:	je     0x400fc9 &lt;phase_3+134&gt;</span><br><span class="line">0x0000000000400fc4 &lt;+129&gt;:	callq  0x40143a &lt;explode_bomb&gt;</span><br><span class="line">0x0000000000400fc9 &lt;+134&gt;:	add    $0x18,%rsp</span><br><span class="line">0x0000000000400fcd &lt;+138&gt;:	retq   </span><br></pre></td></tr></table></figure><br> 分析：解决本题的关键是在第50行的跳转指令需要查看跳转表，首先由前面的汇编代码可以分析出此题首先要输入两个整数，且第一个数要在[0,7]之间，根据第一个数的不同导致第二个数不同，相当于一个switch语句，然后由第一个数根据跳转表跳转到不同的行，将用户输入的第二个数与跳转到的行的常量进行比较，若相同则该函数结束，否则引爆炸弹。因此最重要的是要查看跳转表。<br> <code>重点：jmp指令的操作数有前缀&quot;*&quot;,表明这是一个间接跳转，操作数指定一个内存位置，索引由寄存器%rsi给出，这个寄存器保存着index的值</code><br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">分析：好比switch语句</span><br><span class="line">switch()</span><br><span class="line">&#123;</span><br><span class="line">  case 1:</span><br><span class="line">     if(m!=m1)</span><br><span class="line">         explode_bomb;</span><br><span class="line">     break;</span><br><span class="line">----------------------------</span><br><span class="line">  case 7:</span><br><span class="line">     if(m!=m7)</span><br><span class="line">         explode_bomb;</span><br><span class="line">     break;</span><br><span class="line">  default:</span><br><span class="line">     explode_bomb;</span><br><span class="line">     break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(gdb) x/16xw 0x402470</span><br><span class="line">0x402470:	0x00400f7c	0x00000000	0x00400fb9	0x00000000</span><br><span class="line">0x402480:	0x00400f83	0x00000000	0x00400f8a	0x00000000</span><br><span class="line">0x402490:	0x00400f91	0x00000000	0x00400f98	0x00000000</span><br><span class="line">0x4024a0:	0x00400f9f	0x00000000	0x00400fa6	0x00000000</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">结果：</span><br><span class="line">0       0xcf          207</span><br><span class="line">1       0x137         311</span><br><span class="line">2       0x2c3         707</span><br><span class="line">3       0x100         256</span><br><span class="line">4       0x185         389</span><br><span class="line">5       0xce          206</span><br><span class="line">6       0x2aa         682</span><br><span class="line">7       0x147         327</span><br></pre></td></tr></table></figure>
+<h2 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">0x000000000040100c &lt;+0&gt;:	sub    $0x18,%rsp</span><br><span class="line">0x0000000000401010 &lt;+4&gt;:	lea    0xc(%rsp),%rcx</span><br><span class="line">0x0000000000401015 &lt;+9&gt;:	lea    0x8(%rsp),%rdx</span><br><span class="line">0x000000000040101a &lt;+14&gt;:	mov    $0x4025cf,%esi</span><br><span class="line">0x000000000040101f &lt;+19&gt;:	mov    $0x0,%eax</span><br><span class="line">0x0000000000401024 &lt;+24&gt;:	callq  0x400bf0 &lt;__isoc99_sscanf@plt&gt;</span><br><span class="line">0x0000000000401029 &lt;+29&gt;:	cmp    $0x2,%eax</span><br><span class="line">0x000000000040102c &lt;+32&gt;:	jne    0x401035 &lt;phase_4+41&gt;</span><br><span class="line">0x000000000040102e &lt;+34&gt;:	cmpl   $0xe,0x8(%rsp)</span><br><span class="line">0x0000000000401033 &lt;+39&gt;:	jbe    0x40103a &lt;phase_4+46&gt;</span><br><span class="line">0x0000000000401035 &lt;+41&gt;:	callq  0x40143a &lt;explode_bomb&gt;</span><br><span class="line">0x000000000040103a &lt;+46&gt;:	mov    $0xe,%edx</span><br><span class="line">0x000000000040103f &lt;+51&gt;:	mov    $0x0,%esi</span><br><span class="line">0x0000000000401044 &lt;+56&gt;:	mov    0x8(%rsp),%edi</span><br><span class="line">0x0000000000401048 &lt;+60&gt;:	callq  0x400fce &lt;func4&gt;</span><br><span class="line">0x000000000040104d &lt;+65&gt;:	test   %eax,%eax</span><br><span class="line">0x000000000040104f &lt;+67&gt;:	jne    0x401058 &lt;phase_4+76&gt;</span><br><span class="line">0x0000000000401051 &lt;+69&gt;:	cmpl   $0x0,0xc(%rsp)</span><br><span class="line">0x0000000000401056 &lt;+74&gt;:	je     0x40105d &lt;phase_4+81&gt;</span><br><span class="line">0x0000000000401058 &lt;+76&gt;:	callq  0x40143a &lt;explode_bomb&gt;</span><br><span class="line">0x000000000040105d &lt;+81&gt;:	add    $0x18,%rsp</span><br><span class="line">0x0000000000401061 &lt;+85&gt;:	retq   </span><br></pre></td></tr></table></figure>
+<p>分析：第四关主要是一个递归函数，主要是找到递归的终止条件。这里也是要求输入两个数字，最后一个数字一定是0，第一个是0xe的因子，实质上只要是func4函数能够返回的0输入值就可以。因为我们输入的第一个数会作为func4函数的第一个参数，它的第二个参数是0，第三个数是0xe。然后反汇编函数func4就可以判断当输入的第一个数满足什么条件的时候函数才会返回0，如果不返回0，就会爆炸。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">0x0000000000400fce &lt;+0&gt;:	sub    $0x8,%rsp</span><br><span class="line">0x0000000000400fd2 &lt;+4&gt;:	mov    %edx,%eax</span><br><span class="line">0x0000000000400fd4 &lt;+6&gt;:	sub    %esi,%eax</span><br><span class="line">0x0000000000400fd6 &lt;+8&gt;:	mov    %eax,%ecx</span><br><span class="line">0x0000000000400fd8 &lt;+10&gt;:	shr    $0x1f,%ecx</span><br><span class="line">0x0000000000400fdb &lt;+13&gt;:	add    %ecx,%eax</span><br><span class="line">0x0000000000400fdd &lt;+15&gt;:	sar    %eax</span><br><span class="line">0x0000000000400fdf &lt;+17&gt;:	lea    (%rax,%rsi,1),%ecx</span><br><span class="line">0x0000000000400fe2 &lt;+20&gt;:	cmp    %edi,%ecx</span><br><span class="line">0x0000000000400fe4 &lt;+22&gt;:	jle    0x400ff2 &lt;func4+36&gt;</span><br><span class="line">0x0000000000400fe6 &lt;+24&gt;:	lea    -0x1(%rcx),%edx</span><br><span class="line">0x0000000000400fe9 &lt;+27&gt;:	callq  0x400fce &lt;func4&gt;</span><br><span class="line">0x0000000000400fee &lt;+32&gt;:	add    %eax,%eax</span><br><span class="line">0x0000000000400ff0 &lt;+34&gt;:	jmp    0x401007 &lt;func4+57&gt;</span><br><span class="line">0x0000000000400ff2 &lt;+36&gt;:	mov    $0x0,%eax</span><br><span class="line">0x0000000000400ff7 &lt;+41&gt;:	cmp    %edi,%ecx</span><br><span class="line">0x0000000000400ff9 &lt;+43&gt;:	jge    0x401007 &lt;func4+57&gt;</span><br><span class="line">0x0000000000400ffb &lt;+45&gt;:	lea    0x1(%rcx),%esi</span><br><span class="line">0x0000000000400ffe &lt;+48&gt;:	callq  0x400fce &lt;func4&gt;</span><br><span class="line">0x0000000000401003 &lt;+53&gt;:	lea    0x1(%rax,%rax,1),%eax</span><br><span class="line">0x0000000000401007 &lt;+57&gt;:	add    $0x8,%rsp</span><br><span class="line">0x000000000040100b &lt;+61&gt;:	retq   </span><br></pre></td></tr></table></figure>
+<p>答案：<br>0,0<br>1,0<br>3,0<br>7,0</p>
+<h2 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h2><h3 id="汇编代码"><a href="#汇编代码" class="headerlink" title="汇编代码"></a>汇编代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">0x0000000000401062 &lt;+0&gt;:	push   %rbx</span><br><span class="line">0x0000000000401063 &lt;+1&gt;:	sub    $0x20,%rsp</span><br><span class="line">0x0000000000401067 &lt;+5&gt;:	mov    %rdi,%rbx</span><br><span class="line">0x000000000040106a &lt;+8&gt;:	mov    %fs:0x28,%rax</span><br><span class="line">0x0000000000401073 &lt;+17&gt;:	mov    %rax,0x18(%rsp)</span><br><span class="line">0x0000000000401078 &lt;+22&gt;:	xor    %eax,%eax</span><br><span class="line">0x000000000040107a &lt;+24&gt;:	callq  0x40131b &lt;string_length&gt;</span><br><span class="line">0x000000000040107f &lt;+29&gt;:	cmp    $0x6,%eax</span><br><span class="line">0x0000000000401082 &lt;+32&gt;:	je     0x4010d2 &lt;phase_5+112&gt;</span><br><span class="line">0x0000000000401084 &lt;+34&gt;:	callq  0x40143a &lt;explode_bomb&gt;</span><br><span class="line">0x0000000000401089 &lt;+39&gt;:	jmp    0x4010d2 &lt;phase_5+112&gt;</span><br><span class="line">0x000000000040108b &lt;+41&gt;:	movzbl (%rbx,%rax,1),%ecx</span><br><span class="line">0x000000000040108f &lt;+45&gt;:	mov    %cl,(%rsp)</span><br><span class="line">0x0000000000401092 &lt;+48&gt;:	mov    (%rsp),%rdx</span><br><span class="line">0x0000000000401096 &lt;+52&gt;:	and    $0xf,%edx</span><br><span class="line">0x0000000000401099 &lt;+55&gt;:	movzbl 0x4024b0(%rdx),%edx</span><br><span class="line">0x00000000004010a0 &lt;+62&gt;:	mov    %dl,0x10(%rsp,%rax,1)</span><br><span class="line">0x00000000004010a4 &lt;+66&gt;:	add    $0x1,%rax</span><br><span class="line">0x00000000004010a8 &lt;+70&gt;:	cmp    $0x6,%rax</span><br><span class="line">0x00000000004010ac &lt;+74&gt;:	jne    0x40108b &lt;phase_5+41&gt;</span><br><span class="line">0x00000000004010ae &lt;+76&gt;:	movb   $0x0,0x16(%rsp)</span><br><span class="line">0x00000000004010b3 &lt;+81&gt;:	mov    $0x40245e,%esi</span><br><span class="line">0x00000000004010b8 &lt;+86&gt;:	lea    0x10(%rsp),%rdi</span><br><span class="line">0x00000000004010bd &lt;+91&gt;:	callq  0x401338 &lt;strings_not_equal&gt;</span><br><span class="line">0x00000000004010c2 &lt;+96&gt;:	test   %eax,%eax</span><br><span class="line">0x00000000004010c4 &lt;+98&gt;:	je     0x4010d9 &lt;phase_5+119&gt;</span><br><span class="line">0x00000000004010c6 &lt;+100&gt;:	callq  0x40143a &lt;explode_bomb&gt;</span><br><span class="line">0x00000000004010cb &lt;+105&gt;:	nopl   0x0(%rax,%rax,1)</span><br><span class="line">0x00000000004010d0 &lt;+110&gt;:	jmp    0x4010d9 &lt;phase_5+119&gt;</span><br><span class="line">0x00000000004010d2 &lt;+112&gt;:	mov    $0x0,%eax</span><br><span class="line">0x00000000004010d7 &lt;+117&gt;:	jmp    0x40108b &lt;phase_5+41&gt;</span><br><span class="line">0x00000000004010d9 &lt;+119&gt;:	mov    0x18(%rsp),%rax</span><br><span class="line">0x00000000004010de &lt;+124&gt;:	xor    %fs:0x28,%rax</span><br><span class="line">0x00000000004010e7 &lt;+133&gt;:	je     0x4010ee &lt;phase_5+140&gt;</span><br><span class="line">0x00000000004010e9 &lt;+135&gt;:	callq  0x400b30 &lt;__stack_chk_fail@plt&gt;</span><br><span class="line">0x00000000004010ee &lt;+140&gt;:	add    $0x20,%rsp</span><br><span class="line">0x00000000004010f2 &lt;+144&gt;:	pop    %rbx</span><br><span class="line">0x00000000004010f3 &lt;+145&gt;:	retq   </span><br></pre></td></tr></table></figure>
+<p>分析：大体的意思是，本题要输入6个字符，然后根据每一各字符的低4位(ASCII码为8位)，作为索引&#x2F;数组下标，这里的数组是0x4024b0开头的一个字符串<br><code>maduiersnfotvbylSo you think you can stop the bomb with ctrl-c, do you?</code><br>然后根据得到的索引 从该字符串中取出六个字符，这些字符必须和0x40345e处存放的<code>flyers</code>相等才可以通关。因此我们要从0x4024b0处的字符串分别找到<code>flyers</code>里面每个字符的下标，这里的小标是我们要输入的字符的(ASCII码的低四位)，然后对照ASCII码表找出对应的字符即可。<br><img src="https://s2.loli.net/2022/04/13/Ow6CyPLIR2fiE4A.jpg" alt="1.jpg"><br>找到的小标：9 15 14 5 6 7<br>通过ASCII码表找出后四位分别为9 15 14 5 6 7<br>最终答案为：ionefg</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    Make Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2022/04/12/csapp%E5%AE%9E%E9%AA%8C%E4%B8%89bomb/">CSAPP实验三bomb实验题解</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2022/03/27/gdb%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">gdb的基本使用方法及常用命令</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2022/03/22/%E7%88%B6%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%AD%90%E8%BF%9B%E7%A8%8B/">父进程与子进程</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2022/03/19/%E5%AE%9E%E9%AA%8C%E4%B8%80%E8%A6%81%E5%AD%A6%E7%9A%84%E5%91%BD%E4%BB%A42/">基础命令2</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a target="_blank" rel="noopener" href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a target="_blank" rel="noopener" href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a target="_blank" rel="noopener" href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a target="_blank" rel="noopener" href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a target="_blank" rel="noopener" href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a target="_blank" rel="noopener" href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a target="_blank" rel="noopener" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'klugjotest';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>
