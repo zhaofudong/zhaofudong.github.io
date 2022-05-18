@@ -10,8 +10,6 @@
 
     <!--Description-->
     
-        <meta name="description" content="父进程与子进程的联系">
-    
 
     <!--Author-->
     
@@ -20,7 +18,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="父进程与子进程"/>
+        <meta property="og:title" content="欢迎来到我的世界"/>
     
 
     <!--Open Graph Description-->
@@ -31,7 +29,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
     
 
     <!--Page Cover-->
@@ -45,7 +43,7 @@
 
     <!-- Title -->
     
-    <title>父进程与子进程 - 欢迎来到我的世界</title>
+    <title>归档：2022/5 - 欢迎来到我的世界</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -134,75 +132,107 @@
 <div class="container">
 
     <!-- Main Content -->
-    <div class="row">
+    
+
+<div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
         <header>
     <div class="logo">
-        <a href="/"><i class="logo-icon fa fa-pencil-square" aria-hidden="true"></i></a>
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+            <h1 id="main-title" class="title">2022/5</h1>
         
     </div>
 </header>
 
-        <section class="main">
+        <section class="main archive-container">
             
-<div class="post">
-
-    <div class="post-header">
-        <h1 class="title">
-            <a href="/2022/03/22/%E7%88%B6%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%AD%90%E8%BF%9B%E7%A8%8B/">
-                父进程与子进程
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2022-03-22</span>
-            
-            
-                <a href="#disqus_thread" class="comments">留言</a>
-            
-            
-        </div>
-    </div>
-
-    <div class="content">
-
-        <!-- Gallery -->
-        
-
-        <!-- Post Content -->
-        <h2 id="父进程和子进程"><a href="#父进程和子进程" class="headerlink" title="父进程和子进程"></a>父进程和子进程</h2><p> 子进程是父进程的复制品</p>
-<h2 id="Unix-x2F-Linux系统中的子进程的创建"><a href="#Unix-x2F-Linux系统中的子进程的创建" class="headerlink" title="Unix&#x2F;Linux系统中的子进程的创建"></a>Unix&#x2F;Linux系统中的子进程的创建</h2><p>父进程先执行fork()系统调用，这个调用的结果是系统中多出了一个跟父进程内容完全一样的进程,这个新进程被称为子进程，当然该进程的PCB中父进程指针是指向第一个进程的。<br>前后两个进程各自有自己的地址空间，形式上有点像把一个文件拷贝了一个副本。虽然资源也相互独立，但拷贝时父进程执行过程已生成的数据，子进程也拷了一份。说简单点像一个执行到半路的程序突然在系统中多出了一个孪生兄弟，什么都跟自己一样，但要管自己叫老爸。<br>当然这样的简单复制本身是没什么用处的。要让它发挥作用，还需要再执行exec(B)系统调用，这个调用可以让当前进程转而执行另一个可执行代码（一个新的程序）。简单的说进程本来在执行A程序，一旦执行到这个调用，就转而开始执行B程序。<br>至此，父子两进程就变的不一样了，但不管它们各自执行的什么代码，其父子关系不会改变，在父进程中可以使用子进程的进程ID（在执行fork()时的返回值中得到）来中止子进程的执行。当然子进程也可以因为自己的执行程序结束而终止执行<br>父进程和子进程先后执行的问题，是这样的，在fork之后，是父进程先执行，然后一个时间片到达之后就是子进程再执行了。<br>每一个子进程都有一个父进程，当进程终止或者结束的时候，都会给父进程发送一个SIGCHLD信号，系统默认是父进程忽略这个信号，如果父进程希望被告知其子进程的这种状态改变，则应该捕获这个信号，捕捉函数一般是wait函数来取得子进程ID和子进程状态。<br>对于键盘上的Ctrl+按键的操作，一般是产生一个信号，然后进程捕捉这个信号。另外当然我们可以直接使用这些信号，通过kill命令，把信号发给相应的其他进程。</p>
-<h2 id="wait-函数的用法"><a href="#wait-函数的用法" class="headerlink" title="wait()函数的用法"></a>wait()函数的用法</h2><p>wait函数是父进程等待子进程结束，也就是说当子进程结束的时候会发送给父进程一个信号SIGCHID，这时候父进程通过wait函数接收到这个信号，这时候父进程就知道子进程结束了。这个正好用在shell解析器的编写里面，shell解析器作为父进程，而命令行命令作为子进程，当子进程结束的时候就会告诉父进程，这时候父进程就可以提示输入下一个命令了。</p>
-<h2 id="exec-函数"><a href="#exec-函数" class="headerlink" title="exec()函数"></a>exec()函数</h2><p>一个进程只能为他自己或者他的子进程设置进程组ID，在他的子进程调用了exec函数之后，就不能再改变该子进程的进程组ID了。<br>Linux进程管理对于电脑使用的玩家的常用软件，然后我就学习及深入的研究Linux进程管理，在这里和大家一起探讨Linux进程管理的使用方法，希望对大家有用。程序是为了完成某种任务而设计的软件，比如OpenOffice是程序。</p>
-<h2 id="什么是进程？"><a href="#什么是进程？" class="headerlink" title="什么是进程？"></a>什么是进程？</h2><p>进程就是运行中的程序。一个运行着的程序，可能有多个进程。比如LinuxSir.Org 所用的WWW服务器是apache服务器，当管理员启动服务后，可能会有好多人来访问，也就是说许多用户来同时请求httpd服务，apache服务器将会创建有多个httpd进程来对其进行服务。</p>
-
-    </div>
-
-    
-
-    
-
-    <!-- Comments -->
-    
-    <div class="comments">
-        
-<div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <div class="archive-post">
+    <a href="/2022/05/15/attack-bomb/">
+        <span class="archive-date">
+            May 2022
+        </span>
+        CSAPP实验-attack bomb
+    </a>
 </div>
-
-
-
-    </div>
-    
-
+            
+                <div class="archive-post">
+    <a href="/2022/04/12/csapp%E5%AE%9E%E9%AA%8C%E4%B8%89bomb/">
+        <span class="archive-date">
+            Apr 2022
+        </span>
+        CSAPP实验三bomb实验题解
+    </a>
 </div>
+            
+                <div class="archive-post">
+    <a href="/2022/03/27/gdb%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+        <span class="archive-date">
+            Mar 2022
+        </span>
+        gdb的基本使用方法及常用命令
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2022/03/19/linux%20%E5%AE%9E%E9%AA%8C/">
+        <span class="archive-date">
+            Mar 2022
+        </span>
+        Linux 实验
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2022/03/19/%E5%AE%9E%E9%AA%8C%E4%B8%80%E8%A6%81%E5%AD%A6%E7%9A%84%E5%91%BD%E4%BB%A41/">
+        <span class="archive-date">
+            Mar 2022
+        </span>
+        Linux基础命令
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2022/03/19/%E5%AE%9E%E9%AA%8C%E4%B8%80%E8%A6%81%E5%AD%A6%E7%9A%84%E5%91%BD%E4%BB%A42/">
+        <span class="archive-date">
+            Mar 2022
+        </span>
+        基础命令2
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2022/03/09/%E6%98%9F%E4%BA%91/">
+        <span class="archive-date">
+            Mar 2022
+        </span>
+        星云特效
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2022/05/10/%E7%BD%91%E7%BB%9C%E4%BA%92%E8%81%94%E5%91%BD%E4%BB%A4%E5%A4%8D%E4%B9%A0/">
+        <span class="archive-date">
+            May 2022
+        </span>
+        基础命令
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2022/03/22/%E7%88%B6%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%AD%90%E8%BF%9B%E7%A8%8B/">
+        <span class="archive-date">
+            Mar 2022
+        </span>
+        父进程与子进程
+    </a>
+</div>
+            
         </section>
-
     </div>
 </div>
-
 
 </div>
 
@@ -369,7 +399,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
