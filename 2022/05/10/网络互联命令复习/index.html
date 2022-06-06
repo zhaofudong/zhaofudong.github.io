@@ -179,7 +179,7 @@
 <p>3.配置接口的IP地址</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Huawei-GigabieEtherent0/0/0]ip add 192.20.103.1 24 </span><br></pre></td></tr></table></figure>
 <p>[配置时要在地址后面加上子网掩码或子网掩码长度]<br>4.配置设备名称</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]sysname zfd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]sysname AR1</span><br></pre></td></tr></table></figure>
 <p>[配置时sysname后加上要配置的设备名称]<br>5.查看系统时间</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]dis clock </span><br></pre></td></tr></table></figure>
 <p>6.配置系统时间</p>
@@ -189,7 +189,7 @@
 <p>8.查看当前配置</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;huawei&gt;dis current-configuration </span><br></pre></td></tr></table></figure>
 <p>9.查看接口信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;huawei&gt;dis int </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;huawei&gt;dis int G0/0/0</span><br></pre></td></tr></table></figure>
 <p>10.查看接口ip状态与配置信息</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;huawei&gt;dis ip int b</span><br></pre></td></tr></table></figure>
 <p>11.配置telnet登陆<br>（1）password认证</p>
@@ -197,11 +197,13 @@
 <p>配置用户级别</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]user-int vty 0 4</span><br><span class="line">[Huawei-ui-vty0-4]user privilege level 3</span><br></pre></td></tr></table></figure>
 <p> (2)aaa认证</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]user-int vty 0 4</span><br><span class="line">[Huawei-ui-vty0-4]authentication-mode aaa</span><br><span class="line">[Huawei]aaa</span><br><span class="line">[Huawei-aaa]local-user zfd password cipher 123456</span><br><span class="line">Info:Add a new user</span><br><span class="line">[Huawei-aaa]local-user zfd privilege level 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]user-int vty 0 4</span><br><span class="line">[Huawei-ui-vty0-4]authentication-mode aaa</span><br><span class="line">[Huawei-ui-vty0-4]quit </span><br><span class="line">[Huawei] aaa </span><br><span class="line">[Huawei-aaa]local-user zfd password cipher 123456</span><br><span class="line">Info:Add a new user</span><br></pre></td></tr></table></figure>
+<p>  设置用户级别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Huawei-aaa]local-user zfd privilege level 3</span><br></pre></td></tr></table></figure>
 <h2 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h2><p>1.配置默认路由</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]ip router-static 0.0.0.0 0 下一跳/出接口的ip地址</span><br></pre></td></tr></table></figure>
 <p>2.配置静态路由</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]ip router-static 目的IP 子网掩码 下一跳</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]ip router-static 目的IP 子网掩码 下一跳/出接口的ip地址</span><br></pre></td></tr></table></figure>
 <p>3.查看路由表</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;dis ip routing-table </span><br></pre></td></tr></table></figure>
 <p>4.等价路由<br>目的IP相同，但是下一跳不同，且优先级相同。</p>
@@ -238,8 +240,12 @@
 <p>[若将该区域设置为Totally-Stub区域，该区域的ABR不会将区域间的路由信息和外部路由信息传递到本区域，同样地，ABR会重新产生一条0.0.0.0&#x2F;0的第三类LSA]</p>
 <h2 id="实验六ACL配置"><a href="#实验六ACL配置" class="headerlink" title="实验六ACL配置"></a>实验六ACL配置</h2><p>1.基本ACL配置</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]acl 2000</span><br><span class="line">[Huawei-acl-basic-2000]rule [rule-id] &#123;deny|permit&#125; source &#123;source-addr sourc-wildcard|any&#125;</span><br><span class="line">[Huawei-GigabitEtherent0/0/0]traffic-filter outbound acl 2000</span><br></pre></td></tr></table></figure>
-<p>[注：首先配置基本ACL，然后配置允许或阻止某个来源的IP地址，最后应用到接口上，收到方向或发出反向]<br>2.配置Telnet登陆<br>配置aaa模式或配置password认证<br>3.配置高级ACL</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]acl 3000</span><br><span class="line">[Huawei-acl-adv-3000]rule [deny|permit] 协议/端口号 source ip地址 通配符掩码 destination ip2 通配符掩码</span><br></pre></td></tr></table></figure>
+<p>[注：首先配置基本ACL，然后配置允许或阻止某个来源的IP地址，最后应用到接口上，收到方向或发出反向]<br>2.配置Telnet登陆<br>配置aaa模式或配置password认证<br>（1）password认证</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]user-int vty 0 4</span><br><span class="line">[Huawei-ui-vty0-4]authentication-mode password </span><br><span class="line">Please configure the login password (maximum length 16):123456</span><br><span class="line">配置用户级别</span><br><span class="line">[Huawei]user-int vty 0 4</span><br><span class="line">[Huawei-ui-vty0-4]user privilege level 3</span><br></pre></td></tr></table></figure>
+<p>（2）aaa认证</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]user-int vty 0 4</span><br><span class="line">[Huawei-ui-vty0-4]authentication-mode aaa</span><br><span class="line">[Huawei]aaa</span><br><span class="line">[Huawei-aaa]local-user zfd password cipher 123456</span><br><span class="line">Info:Add a new user</span><br><span class="line">[Huawei-aaa]local-user zfd privilege level 3</span><br></pre></td></tr></table></figure>
+<p>3.配置高级ACL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]acl 3000</span><br><span class="line">[Huawei-acl-adv-3000]rule [deny|permit] 协议/端口号 source ip1地址 通配符掩码 destination ip2地址 通配符掩码</span><br></pre></td></tr></table></figure>
 <p>4.FTP配置命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]ftp server enable </span><br><span class="line">Info:The FTP server is already enable </span><br><span class="line">[Huawei]set default ftp-directory flash:</span><br><span class="line">[Huawei]aaa </span><br><span class="line">[Huawei-aaa]local-user zfd password cipher 123456</span><br><span class="line">Info:Add a new user</span><br><span class="line">[Huawei-aaa]local-user zfd service-type ftp </span><br><span class="line">[Huawei-aaa]local-user zfd ftp-directory flash:</span><br><span class="line">[Huawei-aaa]local-user zfd privilege level 3</span><br></pre></td></tr></table></figure>
 <p>登陆时：ftp FTP服务器的IP地址。<br>5.配置高级ACL，只允许10.19.102.0&#x2F;24的网络内主机FTP到FTP服务器上</p>
