@@ -88,7 +88,7 @@
 <meta property="og:image" content="https://s2.loli.net/2022/07/22/R1iTVfwmSyeLWjP.png">
 <meta property="og:image" content="https://s2.loli.net/2022/07/22/GtKB6q3OdbLofev.png">
 <meta property="article:published_time" content="2022-07-02T00:30:12.193Z">
-<meta property="article:modified_time" content="2022-07-22T01:33:22.909Z">
+<meta property="article:modified_time" content="2022-07-22T01:35:51.018Z">
 <meta property="article:author" content="赵福东">
 <meta property="article:tag" content="文档，照片，音乐，连接，网站">
 <meta name="twitter:card" content="summary_large_image">
@@ -411,7 +411,7 @@
 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">&lt;H3C&gt;tftp 服务器<span class="hljs-built_in">IP</span>地址 <span class="hljs-meta">get</span> 具体的文件名<br></code></pre></td></tr></table></figure>
 <h4 id="10-重启设备"><a href="#10-重启设备" class="headerlink" title="10.重启设备"></a>10.重启设备</h4><p><img src="https://s2.loli.net/2022/07/16/cGstWBq1pI3RVjk.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <h4 id="11-网络设备软件维护的一般性方法"><a href="#11-网络设备软件维护的一般性方法" class="headerlink" title="11.网络设备软件维护的一般性方法"></a>11.网络设备软件维护的一般性方法</h4><p><img src="https://s2.loli.net/2022/07/16/QPz3qmVoSxh5ikl.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
-<h3 id="网络设备基本调试"><a href="#网络设备基本调试" class="headerlink" title="网络设备基本调试"></a>网络设备基本调试</h3><h4 id="1-ping命令的使用"><a href="#1-ping命令的使用" class="headerlink" title="1.ping命令的使用"></a>1.ping命令的使用</h4><p><img src="https://s2.loli.net/2022/07/22/Xo9bjNd5TsKxEH6.png" srcset="/img/loading.gif" lazyload alt="image.png"><br>在要输入源IP地址时，使用：ping -a 源IP地址 目的IP地址</p>
+<h3 id="九、网络设备基本调试"><a href="#九、网络设备基本调试" class="headerlink" title="九、网络设备基本调试"></a>九、网络设备基本调试</h3><h4 id="1-ping命令的使用"><a href="#1-ping命令的使用" class="headerlink" title="1.ping命令的使用"></a>1.ping命令的使用</h4><p><img src="https://s2.loli.net/2022/07/22/Xo9bjNd5TsKxEH6.png" srcset="/img/loading.gif" lazyload alt="image.png"><br>在要输入源IP地址时，使用：ping -a 源IP地址 目的IP地址</p>
 <h4 id="2-tracert命令"><a href="#2-tracert命令" class="headerlink" title="2.tracert命令"></a>2.tracert命令</h4><p><img src="https://s2.loli.net/2022/07/22/YPOU6StkTxH7sXI.png" srcset="/img/loading.gif" lazyload alt="image.png"><br>首先源主机发送一个请求，后面附带TTL值，若超时在收到一个ttl-exceeded报文表明连接超时，若目的端口不可达，在收到一个<br>port-unreachableb报文，表明目的IP不可达。</p>
 <h4 id="3-tracert命令的输出"><a href="#3-tracert命令的输出" class="headerlink" title="3.tracert命令的输出"></a>3.tracert命令的输出</h4><p><img src="https://s2.loli.net/2022/07/22/89p3iIJKlakmrzQ.png" srcset="/img/loading.gif" lazyload alt="image.png"><br>tracert 目的IP地址命令，会显示到达目的IP地址的每一个网络设备的IP地址。<br><img src="https://s2.loli.net/2022/07/22/ztT8d53rwKRcWGh.png" srcset="/img/loading.gif" lazyload alt="image.png"><br>在默认情况下，H3C设备不允许TTL超时以及端口不可达的消息通过，要输入一下命令才能让设备显示经过的每一个网络设备的IP地址。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs H3C命令">[H3C]ip ttl-expires enable<br>[H3C]ip unreachables enable<br></code></pre></td></tr></table></figure>
